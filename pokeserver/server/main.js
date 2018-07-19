@@ -34,5 +34,13 @@ Meteor.methods({
     var random = Math.floor(Math.random() * (max-min)+min);
     
     return Pokemon.insert({image: icons[random], longitude: lng, latitude: lat})
+  },
+  'pokemon.subtract': function(x) {
+    var user = this.userId;
+    if (!user) {
+      console.log('user not signed in')
+      return;
+    }
+    return Pokemon.remove(x)
   }
-})
+});
