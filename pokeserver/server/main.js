@@ -11,11 +11,11 @@ Meteor.startup(() => {
 Meteor.methods({
   'pokemon.add': function(loc) {
     var user = this.userId;
-    if (user) {
+    if (!user) {
       console.log('user not signed in')
       return;
     }
-
+    console.log('Adding Pokemon....')
     var range = 0.035;
     var range1 = Math.random() > 0.5 ? range: -range;
     var range2 = Math.random() > 0.5 ? range: -range;
